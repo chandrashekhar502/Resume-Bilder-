@@ -1,0 +1,71 @@
+<!-- Declares the document type as HTML5 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Sets character encoding to UTF-8 for broad character support -->
+    <meta charset="UTF-8">
+    <!-- Ensures proper scaling on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Page title shown in the browser tab -->
+    <title>Register - Resume Builder</title>
+    <!-- Link to shared stylesheet for consistent design -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Page header with title and quick navigation links -->
+    <header>
+        <!-- Main heading for the registration page -->
+        <h1>🆕 Register</h1>
+        <!-- Short description under the heading -->
+        <p>Create your account</p>
+        <!-- Simple navigation bar with useful links -->
+        <nav class="auth-bar">
+            <!-- Link to login page if the user already has an account -->
+            <a href="login.html">Already have an account? Login</a>
+            <!-- Link back to the resume builder (protected page) -->
+            <a href="index.html">Back to Builder</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Centered container with a single-column layout for the form -->
+        <div class="container" style="max-width:600px; grid-template-columns: 1fr;">
+            <!-- Card-like section for the registration form -->
+            <section class="form-section">
+                <!-- Section heading -->
+                <h2>Create Account</h2>
+                <!-- Registration form: submits handled by script.js -->
+                <form id="registerForm">
+                    <!-- Grouping inputs for spacing and styling -->
+                    <div class="form-group">
+                        <!-- Full name input -->
+                        <input type="text" id="regFullName" placeholder="Full Name" required>
+                        <!-- Email input -->
+                        <input type="email" id="regEmail" placeholder="Email" required>
+                        <!-- Password input -->
+                        <input type="password" id="regPassword" placeholder="Password" required>
+                        <!-- Confirm password input -->
+                        <input type="password" id="regConfirmPassword" placeholder="Confirm Password" required>
+                    </div>
+                    <!-- Submit button to create account -->
+                    <button type="submit" class="btn">Register</button>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <!-- App logic: handles registration and redirects -->
+    <script src="script.js"></script>
+    <script>
+        // If already logged in, redirect to builder
+        (function(){
+            try{
+                const u = localStorage.getItem('rb_current_user');
+                if(u){ window.location.href = 'index.html'; }
+            }catch(e){}
+        })();
+    </script>
+</body>
+</html>
+
+
