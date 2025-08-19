@@ -1,0 +1,57 @@
+<!-- Declares the document type as HTML5 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Sets character encoding to UTF-8 for broad character support -->
+    <meta charset="UTF-8">
+    <!-- Ensures proper scaling on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Page title shown in the browser tab -->
+    <title>Login - Resume Builder</title>
+    <!-- Link to shared stylesheet for consistent design -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Page header with title and quick navigation links -->
+    <header>
+        <!-- Main heading for the login page -->
+        <h1>🔐 Login</h1>
+        <!-- Short description under the heading -->
+        <p>Access your resume builder</p>
+        <!-- Simple navigation bar with useful links -->
+        <nav class="auth-bar">
+            <!-- Link to the registration page for new users -->
+            <a href="register.html">Create an account</a>
+            <!-- Link back to the resume builder (protected page) -->
+            <a href="index.html">Back to Builder</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Centered container with a single-column layout for the form -->
+        <div class="container" style="max-width:600px; grid-template-columns: 1fr;">
+            <!-- Card-like section for the login form -->
+            <section class="form-section">
+                <!-- Section heading -->
+                <h2>Login</h2>
+                <!-- Login form: submits handled by script.js -->
+                <form id="loginForm">
+                    <!-- Grouping inputs for spacing and styling -->
+                    <div class="form-group">
+                        <!-- Email input field (required) -->
+                        <input type="email" id="loginEmail" placeholder="Email" required>
+                        <!-- Password input field (required) -->
+                        <input type="password" id="loginPassword" placeholder="Password" required>
+                    </div>
+                    <!-- Submit button to attempt login -->
+                    <button type="submit" class="btn">Login</button>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <!-- App logic: handles login and redirects -->
+</body>
+</html>
+
+

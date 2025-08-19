@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Resume Builder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>📝 Online Resume Builder</h1>
+        <p>Create your professional resume in minutes</p>
+        <nav class="auth-bar">
+            <span id="welcomeUser" style="display:none"></span>
+            <a href="login.html" id="loginLink">Login</a>
+            <a href="register.html" id="registerLink">Register</a>
+            <button id="logoutBtn" style="display:none">Logout</button>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Form Section -->
+            <section class="form-section">
+                <h2>Fill Your Details</h2>
+                <p class="muted" style="margin-bottom:10px">Your data is stored locally in your browser.</p>
+                <form id="resumeForm">
+                                         <!-- Personal Information -->
+                     <div class="form-group">
+                         <h3>Personal Information</h3>
+                         <div class="photo-upload">
+                             <label for="photoInput" class="photo-label">
+                                 <div class="photo-preview" id="photoPreview">
+                                     <span>📷</span>
+                                     <p>Click to upload photo</p>
+                                 </div>
+                                 <input type="file" id="photoInput" accept="image/*" style="display: none;">
+                             </label>
+                         </div>
+                         <input type="text" id="fullName" placeholder="Full Name" required>
+                         <input type="email" id="email" placeholder="Email" required>
+                         <input type="tel" id="phone" placeholder="Phone Number" required>
+                         <textarea id="address" placeholder="Address" rows="3"></textarea>
+                     </div>
+
+                    <!-- Summary -->
+                    <div class="form-group">
+                        <h3>Professional Summary</h3>
+                        <textarea id="summary" placeholder="Write a brief summary about yourself and your career objectives..." rows="4" required></textarea>
+                    </div>
+
+                    <!-- Education -->
+                    <div class="form-group">
+                        <h3>Education</h3>
+                        <input type="text" id="degree" placeholder="Degree/Course" required>
+                        <input type="text" id="institution" placeholder="Institution/University" required>
+                        <input type="text" id="graduationYear" placeholder="Graduation Year" required>
+                        <input type="text" id="gpa" placeholder="GPA (optional)">
+                    </div>
+
+                                         <!-- Experience -->
+                     <div class="form-group">
+                         <h3>Work Experience</h3>
+                         <label for="experienceType" class="label-inline">Experience Type</label>
+                         <select id="experienceType">
+                             <option value="experienced" selected>Experienced</option>
+                             <option value="fresher">Fresher</option>
+                         </select>
+                         <div id="experienceContainer">
+                             <div class="experience-item">
+                                 <button type="button" class="remove-btn" onclick="removeExperience(this)">×</button>
+								 <input type="text" class="jobTitle" placeholder="Job Title"required>
+                                 <input type="text" class="company" placeholder="Company Name" required>
+                                 <input type="text" class="jobDuration" placeholder="Duration (e.g., 2022-2026)" required>
+                                 <textarea class="jobDescription" placeholder="Describe your responsibilities and achievements..." rows="4" required></textarea>
+                             </div>
+                         </div>
+                         <button type="button" id="addExperienceBtn" class="btn-add" onclick="addExperience()">+ Add Another Experience</button>
+                     </div>
+
+                    <!-- Skills -->
+                    <div class="form-group">
+                        <h3>Skills</h3>
+                        <input type="text" id="skills" placeholder="Enter skills separated by commas (e.g., HTML, CSS, JavaScript)" required>
+                    </div>
+
+                    <!-- Projects -->
+                    <div class="form-group">
+                        <h3>Projects</h3>
+                        <input type="text" id="projectTitle" placeholder="Project Title" required>
+                        <textarea id="projectDescription" placeholder="Describe your project..." rows="3" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn">Generate Resume</button>
+                </form>
+            </section>
+
+            <!-- Preview Section -->
+            <section class="preview-section">
+                <h2>Resume Preview</h2>
+                                 <div class="resume-preview" id="resumePreview">
+                     <div class="resume-header">
+                         <div class="header-content">
+                             <div class="header-text">
+                                 <h1 id="previewName">Your Name</h1>
+                                 <p id="previewContact">Email | Phone | Address</p>
+                             </div>
+                             <div class="header-photo" id="headerPhoto">
+                                 <div class="photo-placeholder">📷</div>
+                             </div>
+                         </div>
+                     </div>
+                    
+                    <div class="resume-section">
+                        <h3>Professional Summary</h3>
+                        <p id="previewSummary">Your professional summary will appear here...</p>
+                    </div>
+
+                    <div class="resume-section">
+                        <h3>Education</h3>
+                        <div id="previewEducation">
+                            <p><strong id="previewDegree">Degree</strong></p>
+                            <p id="previewInstitution">Institution</p>
+                            <p id="previewGraduation">Graduation Year</p>
+                        </div>
+                    </div>
+
+                                         <div class="resume-section" id="previewExperienceSection">
+                         <h3>Work Experience</h3>
+                         <div id="previewExperience">
+                             <div class="experience-preview">
+                                 <p><strong class="previewJobTitle">Job Title</strong> at <strong class="previewCompany">Company</strong></p>
+                                 <p class="previewDuration">Duration</p>
+                                 <p class="previewJobDesc">Job description will appear here...</p>
+                             </div>
+                         </div>
+                         <p id="fresherNote" class="muted" style="display:none">Fresher – no work experience yet.</p>
+                     </div>
+
+                    <div class="resume-section">
+                        <h3>Skills</h3>
+                        <p id="previewSkills">Your skills will appear here...</p>
+                    </div>
+
+                    <div class="resume-section">
+                        <h3>Projects</h3>
+                        <div id="previewProjects">
+                            <p><strong id="previewProjectTitle">Project Title</strong></p>
+                            <p id="previewProjectDesc">Project description will appear here...</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <button id="downloadBtn" class="btn download-btn" onclick="downloadResume()">Download Resume</button>
+            </section>
+        </div>
+    </main>
+</body>
+</html>
